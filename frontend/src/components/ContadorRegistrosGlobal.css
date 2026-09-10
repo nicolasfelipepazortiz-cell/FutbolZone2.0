@@ -2,11 +2,15 @@
 
 .fz-contador-global-container {
   position: fixed;
-  bottom: 24px;
-  left: 24px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 9999;
   font-family: inherit;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Badge flotante minimizado */
@@ -297,11 +301,13 @@
 /* Mobile responsive */
 @media (max-width: 640px) {
   .fz-contador-global-container {
-    bottom: 80px;
-    left: 12px;
-    right: 12px;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 95vw;
   }
   .fz-contador-card-expanded {
-    width: 100%;
+    width: 95vw;
   }
 }
