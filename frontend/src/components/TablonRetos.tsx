@@ -20,6 +20,7 @@ interface Convocatoria {
 
 interface TablonRetosProps {
   onRequireLogin?: () => void;
+  usuario?: any;
 }
 
 const STORAGE_KEY = "fz_convocatorias_retos_v3";

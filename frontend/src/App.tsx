@@ -16,6 +16,7 @@ import AnuncioBanner from "./components/AnuncioBanner";
 import TablonRetos from "./components/TablonRetos";
 import ThemeJoystick from "./components/ThemeJoystick";
 import Icons from "./components/Icons";
+import ContadorRegistrosGlobal from "./components/ContadorRegistrosGlobal";
 import { getStoredUser, removeAuthToken } from "./services/api";
 
 type VistaActual = "landing" | "login" | "registro" | "reserva" | "admin_dashboard" | "client_dashboard";
@@ -95,39 +96,48 @@ function App() {
   // Página independiente de Configuración de Reserva
   if (vista === "reserva" && canchaParaReservar) {
     return (
-      <ReservaCancha
-        cancha={canchaParaReservar}
-        onGoBack={() => {
-          setCanchaParaReservar(null);
-          setVista("landing");
-        }}
-        onReservationCreated={() => {
-          setCanchaParaReservar(null);
-          setVista("client_dashboard");
-        }}
-        onRequireLogin={() => setVista("login")}
-      />
+      <>
+        <ContadorRegistrosGlobal />
+        <ReservaCancha
+          cancha={canchaParaReservar}
+          onGoBack={() => {
+            setCanchaParaReservar(null);
+            setVista("landing");
+          }}
+          onReservationCreated={() => {
+            setCanchaParaReservar(null);
+            setVista("client_dashboard");
+          }}
+          onRequireLogin={() => setVista("login")}
+        />
+      </>
     );
   }
 
   // Dashboard de Admin
   if (vista === "admin_dashboard" && usuario?.rol === "admin") {
     return (
-      <DashboardAdmin
-        onLogout={cerrarSesion}
-        onPublicarAnuncio={(nuevoAnuncio) => setAnuncioGlobal(nuevoAnuncio)}
-      />
+      <>
+        <ContadorRegistrosGlobal />
+        <DashboardAdmin
+          onLogout={cerrarSesion}
+          onPublicarAnuncio={(nuevoAnuncio) => setAnuncioGlobal(nuevoAnuncio)}
+        />
+      </>
     );
   }
 
   // Dashboard de Cliente
   if (vista === "client_dashboard" && usuario) {
     return (
-      <DashboardCliente
-        usuario={usuario}
-        onLogout={cerrarSesion}
-        onGoToBooking={() => setVista("landing")}
-      />
+      <>
+        <ContadorRegistrosGlobal />
+        <DashboardCliente
+          usuario={usuario}
+          onLogout={cerrarSesion}
+          onGoToBooking={() => setVista("landing")}
+        />
+      </>
     );
   }
 
@@ -434,6 +444,9 @@ function App() {
     modoDispositivo={modoDispositivo}
     onCambiarModoDispositivo={setModoDispositivo}
   />
+
+  {/* 📊 COMPONENTE INDEPENDIENTE: CONTADOR DE REGISTROS GLOBAL (REDUX TOOLKIT & BD) */}
+  <ContadorRegistrosGlobal />
 </div>
   );
 }

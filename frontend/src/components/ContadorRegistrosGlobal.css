@@ -1,0 +1,307 @@
+/* Estilos del Componente Independiente: ContadorRegistrosGlobal */
+
+.fz-contador-global-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  font-family: inherit;
+  user-select: none;
+}
+
+/* Badge flotante minimizado */
+.fz-contador-pill-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 15px rgba(16, 185, 129, 0.2);
+  color: #f8fafc;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fz-contador-pill-mini:hover {
+  transform: translateY(-2px);
+  border-color: #10b981;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Indicador pulsante de conexión en vivo */
+.fz-live-pulse-dot {
+  width: 9px;
+  height: 9px;
+  background-color: #10b981;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+}
+
+.fz-live-pulse-dot::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #10b981;
+  animation: fzPulseGlow 1.8s infinite ease-out;
+}
+
+@keyframes fzPulseGlow {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.fz-live-pulse-dot.loading {
+  background-color: #f59e0b;
+}
+
+.fz-live-pulse-dot.loading::after {
+  border-color: #f59e0b;
+}
+
+.fz-contador-chips-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fz-chip-stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.fz-chip-stat strong {
+  color: #34d399;
+  font-size: 0.95rem;
+}
+
+.fz-badge-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+/* Panel Modal / Flotante Extendido */
+.fz-contador-card-expanded {
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(16, 185, 129, 0.25);
+  width: 360px;
+  max-width: 90vw;
+  color: #f8fafc;
+  overflow: hidden;
+  animation: fzSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fzSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fz-contador-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fz-contador-card-header h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #10b981;
+}
+
+.fz-contador-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fz-btn-icon-action {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.fz-btn-icon-action:hover {
+  background: rgba(16, 185, 129, 0.25);
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.fz-btn-icon-action.spinning {
+  animation: fzSpin 1s linear infinite;
+}
+
+@keyframes fzSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.fz-contador-card-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fz-tabla-stat-block {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px;
+  transition: border-color 0.2s;
+}
+
+.fz-tabla-stat-block:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.fz-stat-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.fz-stat-title-row span {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.fz-stat-table-badge {
+  font-size: 0.7rem;
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.fz-stat-big-number {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.fz-stat-subdetail {
+  font-size: 0.78rem;
+  color: #a7f3d0;
+  margin-top: 3px;
+}
+
+.fz-contador-footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #64748b;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fz-live-sync-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Modo Claro Adaptación */
+:root:not(.dark-mode) .fz-contador-pill-mini {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 0 12px rgba(16, 185, 129, 0.2);
+  color: #1e293b;
+}
+
+:root:not(.dark-mode) .fz-chip-stat {
+  color: #334155;
+}
+
+:root:not(.dark-mode) .fz-chip-stat strong {
+  color: #059669;
+}
+
+:root:not(.dark-mode) .fz-contador-card-expanded {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+  color: #1e293b;
+}
+
+:root:not(.dark-mode) .fz-tabla-stat-block {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root:not(.dark-mode) .fz-stat-big-number {
+  color: #0f172a;
+}
+
+:root:not(.dark-mode) .fz-stat-subdetail {
+  color: #059669;
+}
+
+:root:not(.dark-mode) .fz-btn-icon-action {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .fz-contador-global-container {
+    bottom: 80px;
+    left: 12px;
+    right: 12px;
+  }
+  .fz-contador-card-expanded {
+    width: 100%;
+  }
+}

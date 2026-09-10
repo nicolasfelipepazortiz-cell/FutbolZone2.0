@@ -83,7 +83,7 @@ function UbicacionMapa({ onSelectCancha }: UbicacionMapaProps) {
     lng: -74.1120,
     nombre: "SENA Sede Salitre (Calle 26)",
   });
-  const [calculandoRuta, setCalculandoRuta] = useState<boolean>(false);
+  const [_calculandoRuta, setCalculandoRuta] = useState<boolean>(false);
   const [metricasRuta, setMetricasRuta] = useState<{
     distanciaKm: number;
     tiempoCarroMin: number;
